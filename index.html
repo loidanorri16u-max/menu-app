@@ -161,17 +161,14 @@
     document.getElementById('restaurant-name').textContent = RESTAURANT_CONFIG.name;
     document.getElementById('restaurant-logo').textContent = RESTAURANT_CONFIG.logo;
     document.getElementById('maps-link').href = RESTAURANT_CONFIG.googleMapsLink;
-
     renderMenu();
     updateCartCount();
-
     logPageView();
   }
 
   function renderMenu() {
     const container = document.getElementById('menu-container');
     const categories = [...new Set(MENU_DATA.map(item => item.category))];
-
     let html = '';
     categories.forEach(category => {
       html += `<h2 style="color: <LaTex>${RESTAURANT_CONFIG.color}; margin-top: 30px; margin-bottom: 15px;">$</LaTex>{category}</h2>`;
@@ -189,7 +186,6 @@
         `;
       });
     });
-
     container.innerHTML = html;
   }
 
@@ -227,7 +223,6 @@
     const tbody = document.getElementById('cartBody');
     let html = '';
     let total = 0;
-
     cart.forEach(item => {
       const subtotal = item.price * item.quantity;
       total += subtotal;
@@ -239,7 +234,6 @@
         </tr>
       `;
     });
-
     tbody.innerHTML = html;
     document.getElementById('totalPrice').textContent = total;
   }
@@ -289,7 +283,6 @@
     }
 
     const whatsappMessage = formatWhatsAppMessage(orderData);
-
     const whatsappUrl = `https://wa.me/<LaTex>${RESTAURANT_CONFIG.phone.replace('+', '')}?text=$</LaTex>{encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
 
